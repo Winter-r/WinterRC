@@ -15,11 +15,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	'nvim-telescope/telescope.nvim', tag = '0.1.8',
-	{
-		"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"
-	},
-	'mbbill/undotree',
+	{ 'nvim-telescope/telescope.nvim', tag = '0.1.8', },
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{ 'github/copilot.vim' },
+	{ 'tpope/vim-fugitive' },
+	{ 'mbbill/undotree' },
+	{ 'sbdchd/neoformat' },
 	{
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
@@ -47,9 +48,8 @@ require("lazy").setup({
 		end,
 	},
 	{
-		'github/copilot.vim'
-	},
-	{
-		'tpope/vim-fugitive'
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
 	},
 })
