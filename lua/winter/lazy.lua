@@ -27,29 +27,22 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" }
 	},
 	{
-		"tiagovla/tokyodark.nvim",
-		opts = {
-			transparent_background = true, -- set background to transparent
-			gamma = 1.00, -- adjust the brightness of the theme
-			styles = {
-				comments = { italic = true }, -- style for comments
-				keywords = { italic = true }, -- style for keywords
-				identifiers = { italic = true }, -- style for identifiers
-				functions = {}, -- style for functions
-				variables = {}, -- style for variables
-			},
-			custom_highlights = {} or function(highlights, palette) return {} end, -- extend highlights
-			custom_palette = {} or function(palette) return {} end, -- extend palette
-			terminal_colors = true, -- enable terminal colors		
-		},
-		config = function(_, opts)
-			require("tokyodark").setup(opts) -- calling setup is optional
-			vim.cmd [[colorscheme tokyodark]]
-		end,
+		'nobbmaestro/nvim-andromeda',
+		dependencies = { 'tjdevries/colorbuddy.nvim', branch = 'dev' }
 	},
 	{
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
+	},
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+			"3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+		}
 	},
 })
