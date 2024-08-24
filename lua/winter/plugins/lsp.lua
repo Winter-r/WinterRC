@@ -10,7 +10,7 @@ return {
 		
 		mason.setup()
 		mason_lspconfig.setup({
-			ensure_installed = { "lua_ls", "csharp_ls" }
+			ensure_installed = { "lua_ls", "omnisharp" }
 		})
 		
 		lspconfig.lua_ls.setup {}

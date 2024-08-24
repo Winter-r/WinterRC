@@ -1,2 +1,6 @@
 # NeoVim RC
-The beginning of my villain arc fr
+OS: Windows
+Terminal: Windows Terminal (Acrylic enabled)
+Colorscheme: Andromeda
+LSP: Nvim-LSPConfig with Mason
+Languages: C# & Lua
