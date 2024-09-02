@@ -1,19 +1,37 @@
 return {
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-	"neovim/nvim-lspconfig",
+	{
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup()
+		end
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = { "williamboman/mason.nvim" },
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = { "lua_ls", "tsserver", "emmet_language_server" }
+			})
+		end
+	},
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			local lspconfig = require("lspconfig")
 
-	config = function()
-		local mason = require("mason")
-		local mason_lspconfig = require("mason-lspconfig")
-		local lspconfig = require("lspconfig")
-		
-		mason.setup()
-		mason_lspconfig.setup({
-			ensure_installed = { "lua_ls", "omnisharp" }
-		})
-		
-		lspconfig.lua_ls.setup {}
-		lspconfig.csharp_ls.setup {}
-	end
+			local function get_root_dir(fname)
+				return lspconfig.util.find_git_ancestor(fname)
+			end
+
+			lspconfig.lua_ls.setup {
+				root_dir = get_root_dir,
+			}
+			lspconfig.tsserver.setup {
+				root_dir = get_root_dir,
+			}
+			lspconfig.emmet_language_server.setup {
+				root_dir = get_root_dir,
+			}
+		end
+	},
 }
